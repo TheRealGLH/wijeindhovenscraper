@@ -16,7 +16,7 @@ public class Main {
      */
     public static void main(String[] args) throws IOException {
 
-        String fp = "..\\namen";
+        String fp = "namen\\";
         System.out.println("Reading files...");
         File folder = new File(fp);
         File[] listOfFiles = folder.listFiles();
