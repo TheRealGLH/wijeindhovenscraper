@@ -55,7 +55,7 @@ public class Main {
             //TODO: make sure that this try catch block encompasses more and that the catch statement isn't ass
         } catch (java.lang.StringIndexOutOfBoundsException ex) {
             System.out.println("Error formatting name:" + fullname + ". Exception: " + ex);
-                        String[] splits = new String[2];
+            String[] splits = new String[2];
             splits[0] = "f";
             splits[1] = "f";
             return splits;
@@ -83,7 +83,7 @@ public class Main {
         try {
             //this method is used to read all names in a file and to dump them in CSV
             Scanner s = new Scanner(file);
-            
+
             ArrayList<String> list = new ArrayList<String>();//we dump this in a list, rather than keeping the scanner open, because I don't want to keep having a file open in memory longer than needed
             while (s.hasNextLine()) {
                 list.add(s.nextLine());
@@ -95,12 +95,15 @@ public class Main {
                 String n = line.substring(0, i);
                 String[] splits = getNameSplit(n);
                 String e = getMailAddressFromName(splits[0], splits[1]);
+                System.out.println(splits[0] + splits[1]);
                 System.out.println("\t" + e);
-                //fw.write("\"" + n + "\"" + "," + "\"" + e + "\"\n");
-                fw.write("\""+n+"\",\""+e+"\",\""+splits[0]+"\",\""+splits[1]+ "\"\n");
+                fw.write("\"" + splits[0] + "\","//voornaam
+                        + "\"" + splits[1] + "\","//achternaam
+                        + "\"" + e + "\"\n"//email
+                );
 
             }
-           fw.close();
+            fw.close();
         } catch (FileNotFoundException ex) {
             //TODO proper implementation for this
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
